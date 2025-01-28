@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/style/media/img/file-RPmEgVaccpoEdzDh7JgTjK.png" type="image/png">
+    <link rel="stylesheet" href="/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC - GYM</title>
+    
+    <style>
+        
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Musculation - Soulever des Haltères</h1>
+    </header>
+
+    <div class="container">
+        <div class="weight-lifting">
+            <!-- Animation d'haltères -->
+            <div class="dumbbell" id="dumbbell"></div>
+            <button id="startLift">Soulever l'Haltère</button>
+            <p class="counter" id="counter">Nombre de répétitions: 0</p>
+        </div>
+    </div>
+
+    <script>
+        let repetitions = 0;
+        let isLifting = false;
+        const dumbbell = document.getElementById('dumbbell');
+        const startLiftButton = document.getElementById('startLift');
+        const counter = document.getElementById('counter');
+
+        // Fonction pour animer l'haltère
+        function liftDumbbell() {
+            if (isLifting) return;
+
+            isLifting = true;
+            dumbbell.style.transition = "transform 0.5s ease-in-out";
+            dumbbell.style.transform = "translateY(-80px)";  // L'haltère monte
+
+            setTimeout(() => {
+                dumbbell.style.transform = "translateY(0)"; // L'haltère descend
+                repetitions++;
+                counter.textContent = "Nombre de répétitions: " + repetitions;
+                isLifting = false;
+            }, 500); // 500ms = durée de l'animation
+        }
+
+        // Ajouter l'événement au bouton
+        startLiftButton.addEventListener('click', liftDumbbell);
+    </script>
+
+</body>
+</html>
