@@ -7,13 +7,16 @@ const port_http = config.port_http;
 
 var app = express();
 
+//Ajout du style
+app.use("/style", express.static(base + "/style"));
+
 app.use("/", express.static(base+"/html", { index: 'index.html' }))
 
 // Serve la page gym.html
 app.get("/gym", function(req, res) {
     res.sendFile(base + "/html/gym.html");
   });
-  
+
 app.use(express.urlencoded({ extended: true }))
 
 
